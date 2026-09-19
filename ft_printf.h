@@ -6,7 +6,7 @@
 /*   By: srananun <srananun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/14 15:58:58 by srananun          #+#    #+#             */
-/*   Updated: 2026/09/15 20:27:13 by srananun         ###   ########.fr       */
+/*   Updated: 2026/09/18 16:36:06 by srananun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,18 +17,22 @@
 # include <unistd.h>
 # include <stdint.h>
 
-int		ft_printstr(char *str);
-int		ft_printchar(int c);
-int		ft_printnbr(int n);
-int		ft_printpercent(void);
+int		ft_formats(va_list arg, const char format);
+int		ft_printf(const char *str, ...);
+int		ft_print_str(char *str);
+int		ft_print_char(int c);
+int		ft_print_nbr(int n);
+int		ft_print_percent(void);
 int		ft_hex_len(unsigned int num);
 int		ft_print_hex(unsigned int num, const char format);
 int		ft_ptr_len(uintptr_t num);
 int		ft_print_ptr(uintptr_t ptr);
+int		ft_unsigned_len(unsigned int n);
+int		ft_print_unsigned(unsigned int n);
 
 void	ft_put_ptr(uintptr_t num);
-void	ft_putstr(char *str);
-void	ft_puthex(unsigned int num, const char format);
-
+void	ft_put_str(char *str);
+void	ft_put_hex(unsigned int num, const char format);
+void	ft_put_unsigned(unsigned int n);
 
 #endif

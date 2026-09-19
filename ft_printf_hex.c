@@ -6,7 +6,7 @@
 /*   By: srananun <srananun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/15 15:17:07 by srananun          #+#    #+#             */
-/*   Updated: 2026/09/15 17:23:54 by srananun         ###   ########.fr       */
+/*   Updated: 2026/09/18 15:43:42 by srananun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,12 @@ int	ft_hex_len(unsigned int num)
 	return (len);
 }
 
-void	ft_puthex(unsigned int num, const char format)
+void	ft_put_hex(unsigned int num, const char format)
 {
 	if (num >= 16)
 	{
-		ft_puthex(num / 16, format);
-		ft_puthex(num % 16, format);
+		ft_put_hex(num / 16, format);
+		ft_put_hex(num % 16, format);
 	}
 	else
 	{

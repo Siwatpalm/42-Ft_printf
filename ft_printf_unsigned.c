@@ -1,62 +1,48 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf_ptr.c                                    :+:      :+:    :+:   */
+/*   ft_printf_unsigned.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: srananun <srananun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/09/15 16:52:37 by srananun          #+#    #+#             */
-/*   Updated: 2026/09/18 18:14:14 by srananun         ###   ########.fr       */
+/*   Created: 2026/09/16 15:53:42 by srananun          #+#    #+#             */
+/*   Updated: 2026/09/18 16:11:51 by srananun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "ft_printf.h"
 
-int	ft_ptr_len(uintptr_t num)
+int	ft_unsigned_len(unsigned int n)
 {
 	int	len;
 
 	len = 0;
-	if (num == 0)
+	if (n == 0)
 		return (1);
-	while (num != 0)
+	while (n > 0)
 	{
-		num = num / 16;
+		n = n / 10;
 		len++;
 	}
 	return (len);
 }
 
-void	ft_put_ptr(uintptr_t num)
+void	ft_put_unsigned(unsigned int n)
 {
-	if (num >= 16)
+	if (n >= 10)
 	{
-		ft_put_ptr(num / 16);
-		ft_put_ptr(num % 16);
+		ft_put_unsigned(n / 10);
+		ft_put_unsigned(n % 10);
 	}
 	else
 	{
-		if (num <= 9)
-			ft_putchar_fd((num + '0'), 1);
-		else
-			ft_putchar_fd((num - 10 + 'a'), 1);
+		ft_putchar_fd((n + '0'), 1);
 	}
 }
 
-int	ft_print_ptr(uintptr_t ptr)
+int	ft_print_unsigned(unsigned int n)
 {
-	int	print_len;
-
-	print_len = 0;
-	
-	if (ptr == 0)
-		print_len += write(1, "(nil)", 5);
-	else
-	{
-		print_len += write(1, "0x", 2);
-		ft_put_ptr(ptr);
-		print_len += ft_ptr_len(ptr);
-	}
-	return (print_len);
+	ft_put_unsigned(n);
+	return (ft_unsigned_len(n));
 }

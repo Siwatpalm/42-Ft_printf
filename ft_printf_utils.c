@@ -6,14 +6,14 @@
 /*   By: srananun <srananun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/14 17:48:36 by srananun          #+#    #+#             */
-/*   Updated: 2026/09/15 15:04:22 by srananun         ###   ########.fr       */
+/*   Updated: 2026/09/18 18:11:42 by srananun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "ft_printf.h"
 
-void	ft_putstr(char *str)
+void	ft_put_str(char *str)
 {
 	int	i;
 
@@ -25,15 +25,15 @@ void	ft_putstr(char *str)
 	}
 }
 
-int	ft_printstr(char *str)
+int	ft_print_str(char *str)
 {
 	int	i;
 
 	i = 0;
-	if (str == NULL)
+	if (!str)
 	{
-		ft_putstr("NULL");
-		return (4);
+		ft_put_str("(null)");
+		return (6);
 	}
 	while (str[i] != '\0')
 	{
@@ -43,25 +43,25 @@ int	ft_printstr(char *str)
 	return (i);
 }
 
-int	ft_printchar(int c)
+int	ft_print_char(int c)
 {
 	write (1, &c, 1);
 	return (1);
 }
 
-int	ft_printnbr(int n)
+int	ft_print_nbr(int n)
 {
 	int		len;
 	char	*num;
 
 	len = 0;
 	num = ft_itoa(n);
-	len = ft_printstr(num);
+	len = ft_print_str(num);
 	free (num);
 	return (len);
 }
 
-int	ft_printpercent(void)
+int	ft_print_percent(void)
 {
 	write(1, "%", 1);
 	return (1);
